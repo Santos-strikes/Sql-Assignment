@@ -1,0 +1,33 @@
+create database Assignment01;
+
+create table Hotel
+(
+Hotel_No int(10) not null,
+Name varchar(20) unique,
+city varchar(20) 
+);
+
+create table Room
+(
+Room_No int(10) not null,
+Hotel_No int(10) not null,
+Type varchar(20) default "smoke(s)",
+Price int(10) not null,
+primary key(Hotel_No,Room_No)  
+); 
+
+create table Booking
+(
+Hotel_No int(10) not null,
+Guest_No int(10) not null,
+Date_From datetime ,
+Date_To datetime,
+Room_No int(10) not null
+);primary key(Hotel_No,Room_No) 
+
+create table Guest
+(
+Guest_No int(10) not null,
+Name varchar(20) unique,
+city varchar(20) 
+);

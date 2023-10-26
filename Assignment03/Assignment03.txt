@@ -1,0 +1,136 @@
+Assignment 03 (MySql)--> By Santhosh Kumar Thangavel
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+Table creation:
+*************************
+
+CREATE TABLE `hotel`.`hotel` (
+  `Hotel_no` INT NOT NULL,
+  `Name` VARCHAR(45) NOT NULL,
+  `City` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Hotel_no`),
+  UNIQUE INDEX `Name_UNIQUE` (`Name` ASC) VISIBLE);
+  
+  
+  CREATE TABLE `hotel`.`room` (
+  `Room_no` INT NOT NULL,
+  `Hotel_no` VARCHAR(45) NOT NULL,
+  `Rtype` CHAR(1) NOT NULL,
+  `Price` FLOAT NOT NULL,
+  PRIMARY KEY (`Hotel_no`));
+  
+  CREATE TABLE `guest` (
+  `Guest_no` varchar(10) NOT NULL,
+  `GName` varchar(45) NOT NULL,
+  `Gcity` varchar(45) NOT NULL,
+  PRIMARY KEY (`Guest_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  
+  CREATE TABLE `booking` (
+  `Hotel_no` varchar(10) NOT NULL,
+  `Guest_no` varchar(10) NOT NULL,
+  `Date_from` date NOT NULL,
+  `Date_to` date NOT NULL,
+  `Room_no` int NOT NULL,
+  PRIMARY KEY (`Guest_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  
+Inserting Values in table:
+**********************************
+
+hotel
+=====
+  
+H111	Empire Hotel	New York
+H193	Devon Hotel	Boston
+H235	Park Place	New York
+H432	Brownstone Hotel	Toronto
+H437	Clainmont Hotel	Boston
+H498	James plaza	Toronto
+
+room
+=====
+
+223		H437	N	155
+257		H437	N	140
+313		H111	S	145
+345		H498	N	160
+412		H111	N	145
+467		H498	N	180
+876		H432	S	124
+898		H432	S	124
+1001	H193	S	150
+1201	H193	N	175
+1267	H235	N	175
+1289	H235	N	195
+			
+
+guest
+=====
+
+G190	Edward Cane	Baltimore
+G230	Tom Hancock	Philadelphia
+G256	Adam Wayna	Pittsburgh
+G367	Tara Cummings	Baltimore
+G467	Robert Swift	Atlanta
+G879	Vanessa Parry	Pittsburgh
+		
+
+booking
+=======
+
+H193	G120	1999-11-15	1999-11-19	1001
+H437	G190	1999-10-04	1999-10-06	223
+H498	G230	1999-09-15	1999-09-18	467
+H498	G256	1999-11-30	1999-12-02	345
+H111	G367	1999-08-18	1999-08-21	412
+H193	G368	1999-09-12	1999-09-14	1001
+H193	G387	1999-10-01	1999-10-06	1201
+H498	G467	1999-11-03	1999-11-05	345
+H235	G819	1999-09-05	1999-09-12	1267
+H437	G879	1999-09-14	1999-09-17	223
+
+						
+Assignment Question & Ans:
+**********************************	
+
+1.List full details of all hotels.
+------------------------------------
+		select * from hotel;
+		
+2.List full details of all hotels in New York.
+-------------------------------------------------
+		select * from hotel where city="new york";
+		
+3.List the names and cities of all guests, ordered according to their cities.		
+-----------------------------------------------------------------------------
+		select Gname,Gcity from guest order by Gcity;
+		
+4.List all details for non-smoking rooms in ascending order of price.
+----------------------------------------------------------------------
+		select * from room where rtype="S" order by rtype;
+
+5.      List the number of hotels there are.
+---------------------------------------------
+		select count(*) from hotel; 
+
+6.      List the cities in which guests live. Each city should be listed only once.
+-----------------------------------------------------------------------------------
+		select distinct Gcity from guest;
+
+7.      List the average price of a room.
+-----------------------------------------
+		select avg( price ) from room;
+		
+8.      List hotel names, their room numbers, and the type of that room.
+------------------------------------------------------------------------		
+		
+		
+		
+		
+	
+		
+	
+  
